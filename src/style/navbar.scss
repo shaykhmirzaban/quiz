@@ -1,0 +1,30 @@
+.Navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: #f5f5f5;
+  border-bottom: 2px solid #ff530f;
+
+  h1 {
+    font-size: 2.3rem;
+    text-transform: uppercase;
+    color: #ff4800f0;
+  }
+  p {
+    font-size: 0.8rem;
+    color: #ff4800f0;
+  }
+
+  .nav {
+    a {
+      text-decoration: none;
+      padding: 1rem;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      color: #403f3e;
+      font-weight: bold;
+    }
+  }
+}

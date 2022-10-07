@@ -1,0 +1,70 @@
+.Levels {
+  width: 90%;
+  margin: 2rem auto;
+  height: 65vh;
+
+  .heading {
+    padding: 1rem 0;
+
+    h1 {
+      padding: 0.3rem 0;
+      color: #696969;
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+    p {
+      font-size: 1rem;
+      color: #333;
+    }
+  }
+
+  .level {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+
+    .level1 {
+      width: 200px;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f5f5f5;
+      font-size: 1.5rem;
+      color: #312f2f;
+      margin: 0.5rem;
+      cursor: pointer;
+      text-transform: capitalize;
+      border: 2px solid transparent;
+      border-radius: 10px;
+
+      h1 {
+        color: #333333e0;
+      }
+
+      &:hover {
+        border-color: #ff530f;
+      }
+    }
+  }
+
+  .bottomText {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+
+    h1 {
+      color: #4b4b4b;
+      text-transform: capitalize;
+      font-size: 1rem;
+      span {
+        color: #ff530f;
+      }
+    }
+  }
+}
