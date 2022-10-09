@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 // data
 import sourceData from "../Json/Data.json";
@@ -15,16 +15,36 @@ function Quize() {
   let [btnText, setBtnText] = useState("Next");
   let [point, setPoint] = useState([]);
   let [flag1, setFlag1] = useState(true);
-  //   console.log(sourceData[id].BasicInfo[0].totalTime);
-  //   let [seconds, setSeconds] = useState(0);
+  let [time, setTime] = useState({
+    minut: 0,
+    second: 0,
+  });
+  var interval;
 
+  let navigate = useNavigate();
   const checkAnswer = (e) => {
+    let li = document.querySelectorAll("li");
+
     if (data[count].correct === e) {
-      console.log("Right Answer");
       setPoint((value) => [...value, count + 1]);
+
+      // styling li element
+      li.forEach((value) => {
+        if (value.innerText.slice(3).toLowerCase() === e.toLowerCase()) {
+          value.style.backgroundColor = "#1ba817";
+          value.style.color = "#fff";
+        }
+      });
     } else {
-      console.log("Wrong Answer");
+      // styling li element
+      li.forEach((value) => {
+        if (value.innerText.slice(3).toLowerCase() === e.toLowerCase()) {
+          value.style.backgroundColor = "#f52a2af7";
+          value.style.color = "#fff";
+        }
+      });
     }
+
     if (data.length - 1 === count) {
       setBtnText("Finished");
       setFlag1(false);
@@ -32,9 +52,16 @@ function Quize() {
   };
 
   const updateQuestion = () => {
+    let li = document.querySelectorAll("li");
     if (count < 4) {
       setCount((pre) => pre + 1);
       setFlag(true);
+
+      // Styling li element
+      li.forEach((value) => {
+        value.style.backgroundColor = "#fff";
+        value.style.color = "#333";
+      });
     }
   };
 
@@ -43,44 +70,67 @@ function Quize() {
     setFlag(true);
     setBtnText("Next");
     setPoint([]);
+    clearInterval(interval);
     setFlag1(true);
+    time = { minut: 0, second: 0 };
+    asd();
   };
 
-  //   useEffect(() => {
-  //     let interval = setInterval(() => {
-  //       setSeconds((val) => val + 1);
-  //     }, 1000);
+  const liFn = (e) => {
+    if (flag) {
+      checkAnswer(e);
+      setFlag(false);
+    }
+  };
 
-  //   }, []);
+  const asd = () => {
+    var updateMinut, updateSecond;
+    const run = () => {
+      updateMinut = time.minut;
+      updateSecond = time.second;
+
+      if (updateSecond === 60) {
+        updateMinut++;
+        updateSecond = 0;
+      }
+
+      if (updateMinut === 2) {
+        setFlag1(false);
+        clearInterval(interval);
+      } else {
+        updateSecond++;
+      }
+
+      setTime(time);
+      time = { minut: updateMinut, second: updateSecond };
+    };
+
+    interval = setInterval(run, 1000);
+  };
+
+  useEffect(asd, []);
 
   return (
     <section className="Quize">
       {flag1 ? (
         <div className="ques">
           <h1>Questions {`${count + 1} / ${data.length}`}</h1>
+          <h4 className="timer">
+            {time.minut < 10 ? `0${time.minut}` : time.minut}:
+            {time.second < 10 ? `0${time.second}` : time.second}
+          </h4>
           <div className="questions">
             <div className="question">
               <h1>Q: {data[count].question}</h1>
 
               <ul>
                 {data[count].options.map((value, index) => {
-                  // let [sty, setSty] = useState(true);
                   return (
                     <li
                       key={index}
-                      onClick={
-                        flag
-                          ? () => {
-                              setFlag(false);
-                              checkAnswer(value);
-                              // setSty(false);
-                            }
-                          : null
-                      }
-                      // style={{
-                      //   backgroundColor: sty ? "" : "#ff530f",
-                      //   color: sty ? "" : "#fff",
-                      // }}
+                      onClick={() => {
+                        liFn(value);
+                      }}
                     >
                       {`${index + 1}) ${value}`}
                     </li>
@@ -97,15 +147,20 @@ function Quize() {
         </div>
       ) : (
         <div className="score">
-          <h1>Score</h1>
           {point.length == 5 ? (
-            <p>Awesome play</p>
+            <p>Awesome play 😍</p>
           ) : (
-            <p>You did a good job, Keep trying to get better</p>
+            <p>You did a good job, Keep trying to get better 😢</p>
           )}
-          <h3>{point.length}</h3>
 
-          <button onClick={tryAgain}>Rewind</button>
+          <h4>Total question {data.length}</h4>
+          <h4>Correct {point.length}</h4>
+          <h4>Wrong {data.length - point.length}</h4>
+          <h4>Percentage {(point.length * 100) / data.length}%</h4>
+         
+
+          <button onClick={tryAgain} className="rewind">Rewind</button>
+          <button onClick={() => navigate("/category")} className="category">Go to category</button>
         </div>
       )}
     </section>
@@ -113,77 +168,3 @@ function Quize() {
 }
 
 export default Quize;
-
-//   useEffect(() => {
-//     let interval = setInterval(() => {
-//       setSeconds((val) => val + 1);
-//     }, 1000);
-
-//     if (seconds == 10) {
-//         clearInterval(interval);
-//     }
-//     // return () => clearInterval(interval);
-//     // const interval = setInterval(() => {
-//         //     setSeconds(seconds => seconds + 1);
-//         //   }, 1000);
-//     }, []);
-
-// const updateTime = () => {
-//     setInterval(()=> {
-//         setSeconds(val => val + 1);
-//     }, 1000);
-// }
-// console.log(seconds);
-// updateTime();
-//   useEffect(() => {
-//     let second = setInterval(() => {
-//       setSeconds((second) => second + 1);
-//     }, 1000);
-//     return () => clearInterval(second);
-//   }, []);
-
-//   console.log(seconds);
-
-//   let date = new Date();
-//   let minut = date.getMinutes();
-//   let second = date.getSeconds();
-//   console.log(minut);
-//   console.log(second);
-
-// let minut = 0;/
-// useEffect(() => {
-//     let interval = null;
-//     if(seconds === 10) {
-//         interval = setInterval(() => {
-//             setSeconds((val) => val + 1);
-//         }, 1000);
-
-//         // if(n === 20) {
-//         //     clearInterval(interval);
-//         //     console.log(n);
-//         // }
-//         return () => clearInterval(interval);
-//     } else {
-//         return () => clearInterval(interval);
-//     }
-//     // if (seconds === 10) {
-//     //     console.log("run");
-//     //     return () => clearInterval(interval);
-//     // }
-
-// }, [seconds]);
-
-// console.log(seconds);
-
-// function asd () {
-//     let interval = setInterval(() => {
-//         minut = minut + 1;
-//         setSeconds(minut);
-//     }, 1000);
-
-//     if(minut === 10) {
-//         clearInterval(interval);
-//     }
-// }
-
-// asd();

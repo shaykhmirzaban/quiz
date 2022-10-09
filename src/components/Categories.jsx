@@ -18,7 +18,6 @@ function Categories() {
   });
 
   function moveData(e) {
-    console.log(e);
     navigate(`${e}`);
   }
 

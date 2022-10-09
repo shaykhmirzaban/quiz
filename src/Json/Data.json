@@ -26,7 +26,7 @@
           "Merdeka Cup",
           "V.C.C. Cup"
         ],
-        "correct": "Merdeka Cup ",
+        "correct": "Merdeka Cup",
         "id": 3
       },
       {
@@ -145,7 +145,7 @@
       {
         "name": "Sports",
         "totalQuestion": 5,
-        "totalTime": 5
+        "totalTime": 2
       }
     ]
   },
@@ -199,11 +199,7 @@
       },
       {
         "question": "The temperature of Southern part of Pakistan is",
-        "options": [
-          "cold",
-          "hot",
-          "moderate"
-        ],
+        "options": ["cold", "hot", "moderate"],
         "correct": "hot",
         "id": 7
       },
@@ -219,21 +215,13 @@
       },
       {
         "question": "During Summer in Pakistan, sometimes the temperature goes beyond",
-        "options": [
-          "45 degree",
-          "50 degree",
-          "55 degree"
-        ],
+        "options": ["45 degree", "50 degree", "55 degree"],
         "correct": "50 degree",
         "id": 9
       },
       {
         "question": "In Pakistan, nights are longer and days are shorter in",
-        "options": [
-          "Summer",
-          "Spring",
-          "Winter"
-        ],
+        "options": ["Summer", "Spring", "Winter"],
         "correct": "Winter",
         "id": 10
       }
@@ -252,12 +240,7 @@
       },
       {
         "question": "Green house effect is mainly caused by:",
-        "options": [
-          "Carbon dioxide",
-          "Nitrogen",
-          "Ethane",
-          "Oxygen"
-        ],
+        "options": ["Carbon dioxide", "Nitrogen", "Ethane", "Oxygen"],
         "correct": "Carbon dioxide",
         "id": 12
       },
@@ -274,23 +257,13 @@
       },
       {
         "question": "Plants get their nitrogen from:",
-        "options": [
-          "Air",
-          "Water",
-          "Soil",
-          "Other plants"
-        ],
+        "options": ["Air", "Water", "Soil", "Other plants"],
         "correct": "Soil",
         "id": 14
       },
       {
         "question": "Deforestation generally increases:",
-        "options": [
-          "Rain fall",
-          "Global warming",
-          "Drought",
-          "Both 1 and 2"
-        ],
+        "options": ["Rain fall", "Global warming", "Drought", "Both 1 and 2"],
         "correct": "Both 1 and 2",
         "id": 15
       }
@@ -299,7 +272,7 @@
       {
         "name": "Envireoment",
         "totalQuestion": 5,
-        "totalTime": 5
+        "totalTime": 2
       }
     ]
   },
@@ -469,7 +442,7 @@
       {
         "name": "Math",
         "totalQuestion": 5,
-        "totalTime": 5
+        "totalTime": 2
       }
     ]
   },
@@ -639,7 +612,7 @@
       {
         "name": "Science",
         "totalQuestion": 5,
-        "totalTime": 5
+        "totalTime": 2
       }
     ]
   },
@@ -809,7 +782,7 @@
       {
         "name": "Law",
         "totalQuestion": 5,
-        "totalTime": 5
+        "totalTime": 2
       }
     ]
   },
@@ -979,7 +952,7 @@
       {
         "name": "cinema",
         "totalQuestion": 5,
-        "totalTime": 5
+        "totalTime": 2
       }
     ]
   }
